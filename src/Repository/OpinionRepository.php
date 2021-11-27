@@ -19,22 +19,14 @@ class OpinionRepository extends ServiceEntityRepository
         parent::__construct($registry, Opinion::class);
     }
 
-    // /**
-    //  * @return Opinion[] Returns an array of Opinion objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findAllOrderBy($orderBy)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('o.' . $orderBy, 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Opinion
