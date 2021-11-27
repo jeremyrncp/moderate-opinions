@@ -30,9 +30,9 @@ class OpinionController extends AbstractController
         }
 
         if ($request->query->has('orderBy') && in_array($request->query->get('orderBy'), ['date', 'note'])) {
-            $opinions = $entityManager->getRepository(Opinion::class)->findAllOrderBy($request->query->get('orderBy'));
+            $opinions = $entityManager->getRepository(Opinion::class)->findAllActiveOrderBy($request->query->get('orderBy'));
         } else {
-            $opinions = $entityManager->getRepository(Opinion::class)->findAll();
+            $opinions = $entityManager->getRepository(Opinion::class)->findAllActiveOrderBy('date');
         }
 
         return $this->render('opinion/index.html.twig', [

@@ -42,6 +42,11 @@ class Opinion
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $deactivate = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,5 +110,21 @@ class Opinion
         $this->date = $date;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeactivate()
+    {
+        return $this->deactivate;
+    }
+
+    /**
+     * @param mixed $deactivate
+     */
+    public function setDeactivate($deactivate): void
+    {
+        $this->deactivate = $deactivate;
     }
 }
