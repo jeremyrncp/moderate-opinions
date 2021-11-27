@@ -19,9 +19,10 @@ class OpinionRepository extends ServiceEntityRepository
         parent::__construct($registry, Opinion::class);
     }
 
-    public function findAllOrderBy($orderBy)
+    public function findAllActiveOrderBy($orderBy)
     {
         return $this->createQueryBuilder('o')
+            ->where('o.deactivate != true')
             ->orderBy('o.' . $orderBy, 'DESC')
             ->getQuery()
             ->getResult()
